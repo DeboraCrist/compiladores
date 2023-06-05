@@ -1,0 +1,14 @@
+#Options
+GenerateScanner = true
+GenerateParser = false
+Language = Java
+ScannerName = Lexico
+ScannerCaseSensitive = true
+ScannerTable = Full
+Input = Stream
+#RegularDefinitions
+D: [0-9]
+C: [a-zA-Z]
+U: [_]
+#Tokens
+T_ID: {D}({C}|{D}|{U})*

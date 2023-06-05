@@ -1,0 +1,36 @@
+#Options
+GenerateScanner = true
+GenerateParser = true
+Language = Java
+ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
+ScannerCaseSensitive = true
+ScannerTable = Full
+Input = Stream
+Parser = SLR
+#RegularDefinitions
+C: [a-zA-Z]
+U: [0-9]
+#Tokens
+:[\ \n\t\r\s]
+fim: ";"
+NUMERO: {U}+.{U}+
+
+T_INT: "int"
+T_FLOAT: "float"
+T_STRING: "string"
+
+T_ID: {C}({C})*
+#NonTerminals
+<S>
+<derivacao>
+<tipo_1>
+<tipo_2>
+<tipo_3>
+#Grammar
+<S> ::= <S><derivacao> | <derivacao>;
+<derivacao> ::= <tipo_1> | <tipo_2> | <tipo_3> | fim #4;
+<tipo_1> ::= T_INT T_ID #1;
+<tipo_2> ::= T_FLOAT NUMERO #2;
+<tipo_3> ::= T_STRING T_ID #3;
